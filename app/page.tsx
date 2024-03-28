@@ -28,53 +28,55 @@ export default function Home() {
       </div>
 
       <div className="flex flex-row gap-5 self-start text-sm mb-5">
-        <div className="flex flex-col gap-1">
-          <label
-            className="opacity-80 font-semibold"
-            htmlFor="light_strip_length"
-          >
-            Light Strip Length
-          </label>
-          <input
-            type="number"
-            value={lightStripLength}
-            id="light_strip_length"
-            onChange={(e) => setLightStripLength(Number(e.target.value))}
-            className=" text-white bg-transparent p-2 rounded ring-[1.5px] ring-white/50 max-w-[150px]"
-          />
-        </div>
-        <div className="flex flex-row align-baseline">
-          <span>x</span>
-        </div>
-        <div className="flex flex-col gap-1">
-          <label
-            className="opacity-80 font-semibold"
-            htmlFor="light_strips_amount"
-          >
-            Number of Strips
-          </label>
-          <input
-            type="number"
-            value={lightStripsAmount}
-            id="light_strips_amount"
-            onChange={(e) => setLightStripsAmount(Number(e.target.value))}
-            className=" text-white bg-transparent p-2 rounded ring-[1.5px] ring-white/50 max-w-[150px]"
-          />
-        </div>
-        <div className="flex flex-row align-baseline">
-          <span>=</span>
-        </div>
-        <div className="flex flex-col gap-1">
-          <label className="opacity-80 font-semibold" htmlFor="lights_count">
-            Pixel Total
-          </label>
-          <input
-            type="number"
-            value={lightCount}
-            id="lights_count"
-            disabled // Make the field disabled
-            className=" text-white bg-transparent p-2 rounded ring-[1.5px] ring-white/50 max-w-[150px] opacity-50 cursor-not-allowed"
-          />
+        <div className="flex flex-row gap-2  max-w-1/2">
+          <div className="flex flex-col gap-1">
+            <label
+              className="opacity-80 font-semibold"
+              htmlFor="light_strip_length"
+            >
+              Light Strip Length
+            </label>
+            <input
+              type="number"
+              value={lightStripLength}
+              id="light_strip_length"
+              onChange={(e) => setLightStripLength(Number(e.target.value))}
+              className=" text-white bg-transparent p-2 rounded ring-[1.5px] ring-white/50 max-w-[150px]"
+            />
+          </div>
+          <div className="flex flex-row align-baseline">
+            <span>x</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label
+              className="opacity-80 font-semibold"
+              htmlFor="light_strips_amount"
+            >
+              Number of Strips
+            </label>
+            <input
+              type="number"
+              value={lightStripsAmount}
+              id="light_strips_amount"
+              onChange={(e) => setLightStripsAmount(Number(e.target.value))}
+              className=" text-white bg-transparent p-2 rounded ring-[1.5px] ring-white/50 max-w-[150px]"
+            />
+          </div>
+          <div className="flex flex-row align-baseline">
+            <span>=</span>
+          </div>
+          <div className="flex flex-col gap-1">
+            <label className="opacity-80 font-semibold" htmlFor="lights_count">
+              Pixel Total
+            </label>
+            <input
+              type="number"
+              value={lightCount}
+              id="lights_count"
+              disabled // Make the field disabled
+              className=" text-white bg-transparent p-2 rounded ring-[1.5px] ring-white/50 max-w-[150px] opacity-50 cursor-not-allowed"
+            />
+          </div>
         </div>
         <div className="flex flex-row gap-5">
           <div className="flex flex-col gap-1">
