@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -24,7 +25,15 @@ export default function Home() {
     <main className="flex min-h-screen flex-col justify-start p-10">
       <div className="flex flex-row justify-between items-baseline">
         <h1 className="text-xl mb-3">LED Strip to Matrix Tool</h1>
-        <p>by Chase Cee</p>
+        <p>
+          by{" "}
+          <Link
+            href="https://chasecee.com"
+            className="border-b border-opacity-40 border-white"
+          >
+            Chase Cee
+          </Link>
+        </p>
       </div>
 
       <div className="flex flex-row gap-5 self-start text-sm mb-5">
