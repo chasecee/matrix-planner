@@ -4,7 +4,7 @@ interface MatrixDisplayProps {
   lightStripLength: number;
   lightStripsAmount: number;
   isSerpentine: string;
-  lightStripColors: string[]; // Add this line
+  lightStripColors: string[];
 }
 
 export const MatrixDisplay = ({
@@ -13,35 +13,33 @@ export const MatrixDisplay = ({
   lightStripLength,
   lightStripsAmount,
   isSerpentine,
-  lightStripColors, // Add this line
+  lightStripColors,
 }: MatrixDisplayProps) => (
   <div className="relative w-full h-full">
     <div
-      className="grid gap-[1px]"
+      className="grid gap-[5px]"
       style={{
         gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${columnCount}, minmax(0, 1fr))`,
       }}
     >
       {Array.from({ length: lightCount }, (_, index) => {
         let adjustedIndex = index;
         const row = Math.floor(index / columnCount);
         const isRowEven = row % 2 === 0;
-
+        const positionInRow = index % columnCount;
+        const isFirstInRow = positionInRow === 0;
+        const isLastInRow = positionInRow === columnCount - 1;
+        const totalRows = Math.ceil(lightCount / columnCount);
+        const isLastRow = row === totalRows - 1;
+        const isLastLight = adjustedIndex === lightCount - 1;
+        const shouldShowConnector = !isLastLight;
         switch (isSerpentine) {
           case "serpentine":
             if (!isRowEven) {
               const startOfRow = row * columnCount;
               const endOfRow = startOfRow + columnCount - 1;
               adjustedIndex = endOfRow - (index - startOfRow);
-            }
-            break;
-          case "parallel":
-            // In parallel mode, the adjustedIndex remains the same as the original index
-            break;
-          case "wrap":
-            if (row % lightStripsAmount === 0 && row !== 0) {
-              // When a new set of strips starts, wrap back to the start of the matrix
-              adjustedIndex = index % (columnCount * lightStripsAmount);
             }
             break;
           default:
@@ -53,13 +51,37 @@ export const MatrixDisplay = ({
           Math.floor(adjustedIndex / lightStripLength) % lightStripsAmount;
         const bgColor = lightStripColors[stripIndex];
 
+        const baseClass = "bg-current absolute z-[-1] transform-gpu top-1/2";
+
         return (
           <div
-            key={index}
-            className="flex flex-col items-center justify-center aspect-square rounded-sm"
-            style={{ backgroundColor: bgColor }}
+            key={`light-${adjustedIndex + 1}`}
+            id={`light-${adjustedIndex + 1}`}
+            className="flex flex-col items-center justify-center aspect-square rounded-md relative ani"
+            style={{ backgroundColor: bgColor, color: bgColor }}
           >
-            <span className="text-opacity-50 text-[10px] text-black">
+            {isRowEven && !isLastInRow && shouldShowConnector && (
+              <div
+                className={`${baseClass} h-2 w-8 left-to-right top-1/2 left-full -translate-y-1/2 -translate-x-1/2`}
+              ></div>
+            )}
+            {!isRowEven && !isFirstInRow && shouldShowConnector && (
+              <div
+                className={`${baseClass} h-2 w-8 right-to-left top-1/2 right-full -translate-y-1/2 translate-x-1/2`}
+              ></div>
+            )}
+            {isRowEven && isLastInRow && shouldShowConnector && (
+              <div
+                className={`${baseClass} h-8 w-2 top-to-bottom top-full left-1/2 -translate-x-1/2`}
+              ></div>
+            )}
+            {!isRowEven && isFirstInRow && shouldShowConnector && (
+              <div
+                className={`${baseClass} h-8 w-2 top-to-bottom top-full left-1/2 -translate-x-1/2`}
+              ></div>
+            )}
+
+            <span className=" text-[11px] text-black/50 font-extraboldbold">
               {adjustedIndex + 1}
             </span>
           </div>
