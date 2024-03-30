@@ -17,7 +17,7 @@ export const MatrixDisplay = ({
 }: MatrixDisplayProps) => (
   <div className="relative w-full h-full">
     <div
-      className="grid gap-[5px]"
+      className="grid gap-[.75cqi]"
       style={{
         gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
         gridTemplateRows: `repeat(${columnCount}, minmax(0, 1fr))`,
@@ -57,31 +57,31 @@ export const MatrixDisplay = ({
           <div
             key={`light-${adjustedIndex + 1}`}
             id={`light-${adjustedIndex + 1}`}
-            className="flex flex-col items-center justify-center aspect-square rounded-md relative ani"
+            className="flex flex-col items-center justify-center aspect-square rounded-[.5cqi] relative ani"
             style={{ backgroundColor: bgColor, color: bgColor }}
           >
             {isRowEven && !isLastInRow && shouldShowConnector && (
               <div
-                className={`${baseClass} h-2 w-8 left-to-right top-1/2 left-full -translate-y-1/2 -translate-x-1/2`}
+                className={`${baseClass} h-[1cqi] w-[3cqi] left-to-right top-1/2 left-full -translate-y-1/2 -translate-x-1/2`}
               ></div>
             )}
             {!isRowEven && !isFirstInRow && shouldShowConnector && (
               <div
-                className={`${baseClass} h-2 w-8 right-to-left top-1/2 right-full -translate-y-1/2 translate-x-1/2`}
+                className={`${baseClass} h-[1cqi] w-[3cqi] right-to-left top-1/2 right-full -translate-y-1/2 translate-x-1/2`}
               ></div>
             )}
             {isRowEven && isLastInRow && shouldShowConnector && (
               <div
-                className={`${baseClass} h-8 w-2 top-to-bottom top-full left-1/2 -translate-x-1/2`}
+                className={`${baseClass} h-[3cqi] w-[1cqi] top-to-bottom top-full left-1/2 -translate-x-1/2`}
               ></div>
             )}
             {!isRowEven && isFirstInRow && shouldShowConnector && (
               <div
-                className={`${baseClass} h-8 w-2 top-to-bottom top-full left-1/2 -translate-x-1/2`}
+                className={`${baseClass} h-[3cqi] w-[1cqi] top-to-bottom top-full left-1/2 -translate-x-1/2`}
               ></div>
             )}
 
-            <span className=" text-[11px] text-black/50 font-extraboldbold">
+            <span className=" text-[1cqi] text-black/50 font-extraboldbold">
               {adjustedIndex + 1}
             </span>
           </div>

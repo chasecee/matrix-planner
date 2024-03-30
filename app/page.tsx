@@ -5,7 +5,7 @@ import { ControlPanel } from "./components/ControlPanel";
 import { MatrixDisplay } from "./components/MatrixDisplay";
 
 export default function Home() {
-  const [columnCount, setColumnCount] = useState(24); // Default to 24 columns
+  const [columnCount, setColumnCount] = useState(25); // Default to 24 columns
   const [lightCount, setLightCount] = useState(250); // Default to 250 lights
   const [lightStripLength, setLightStripLength] = useState(50); // Default length of each light strip
   const [lightStripsAmount, setLightStripsAmount] = useState(5); // Default amount of light strips
