@@ -24,7 +24,7 @@ export default function Home() {
     (_, index) => generateColor(index, lightStripsAmount)
   );
   return (
-    <main className="flex min-h-screen flex-col justify-start p-10">
+    <main className="flex min-h-screen flex-col justify-start py-6 px-4 lg:p-10">
       <Header title="Matrix Planner" authorLink="https://chasecee.com" />
       <ControlPanel
         lightStripLength={lightStripLength}
